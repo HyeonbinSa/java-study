@@ -11,6 +11,8 @@
 
 ### Java Optional
 
-- 📄 Optional 이론 학습 
+- 📄 Optional 이론 학습 ([링크](https://github.com/HyeonbinSa/study-roadmap/blob/master/Java/JavaBasic/Optional.md)) 
 - 💻 Optional 실습 코드 
-  - [Optional 사용 예시  코드](https://github.com/HyeonbinSa/java-study/blob/master/src/optional/Main.java)
+  - [Optional 생성](https://github.com/HyeonbinSa/java-study/blob/master/src/optional/create/CreateOptional.java)
+  - [Optional 함수](https://github.com/HyeonbinSa/java-study/blob/master/src/optional/get/GetOptional.java)
+
