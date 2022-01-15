@@ -1,4 +1,4 @@
-package stream;
+package streampractice;
 
 public class Person {
     private final String name;

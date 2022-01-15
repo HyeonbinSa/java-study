@@ -1,4 +1,4 @@
-package stream;
+package streampractice;
 
 import java.util.*;
 import java.util.stream.Collectors;

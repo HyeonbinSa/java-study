@@ -1,4 +1,4 @@
-package stream;
+package streampractice;
 
 public enum Gender {
     MALE, FEMALE

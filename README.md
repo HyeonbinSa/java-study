@@ -7,6 +7,7 @@
 - 📄 Stream 이론 학습 [(링크)](https://github.com/HyeonbinSa/study-roadmap/blob/master/Java/JavaBasic/Stream.md)
 - 💻 Stream 실습 코드 
   - [Stream 생성](https://github.com/HyeonbinSa/java-study/tree/master/src/createstream)
+  - Stream 중간  연산
 
 ### Java Optional
 
