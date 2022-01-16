@@ -8,6 +8,7 @@
 - 💻 Stream 실습 코드 
   - [Stream 생성](https://github.com/HyeonbinSa/java-study/blob/master/src/stream/createstream/CreateStream.java)
   - [Stream 중간  연산](https://github.com/HyeonbinSa/java-study/blob/master/src/stream/intermediateoperation/IntermediateOperationStream.java)
+  - [Stream 최종 연산](https://github.com/HyeonbinSa/java-study/blob/master/src/stream/terminaloperation/TerminalOperationStream.java)
 
 ### Java Optional
 
