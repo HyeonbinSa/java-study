@@ -1,15 +1,27 @@
 package stream.terminaloperation;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.OptionalInt;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class TerminalOperationStream {
+    private static Student[] students = {new Student("Alice", 11),
+            new Student("Brian", 17),
+            new Student("Chris", 16),
+            new Student("Dalot", 18),
+            new Student("Elis", 14)};
+
+
     public static void main(String[] args) {
         forEachOrdered();
         matchOperation();
         findOperation();
         reduce();
+        collectToCollection();
     }
 
     private static void forEachOrdered() {
@@ -21,6 +33,7 @@ public class TerminalOperationStream {
         // forEachOrdered()
         System.out.print("병렬 Stream forEachOrdered : ");
         IntStream.rangeClosed(1, 9).parallel().forEachOrdered(number -> System.out.print(number + " "));
+        System.out.println();
         System.out.println();
     }
 
@@ -38,6 +51,7 @@ public class TerminalOperationStream {
         intStream = IntStream.rangeClosed(1, 9);
         result = intStream.noneMatch(number -> number > 8);
         System.out.println("noneMatch : " + result);
+        System.out.println();
     }
 
     private static void findOperation() {
@@ -48,6 +62,7 @@ public class TerminalOperationStream {
         IntStream intStream2 = IntStream.rangeClosed(1, 9);
         OptionalInt optionalInt2 = intStream2.parallel().filter(number -> number >= 3).findAny();
         System.out.println("findAny() : " + optionalInt2.getAsInt());
+        System.out.println();
     }
 
     private static void reduce() {
@@ -64,5 +79,33 @@ public class TerminalOperationStream {
         IntStream stringLengthStream2 = stringStream2.mapToInt(String::length);
         OptionalInt max = stringLengthStream2.reduce(Integer::max);
         System.out.println("최대 길이 : " + max.getAsInt());
+        System.out.println();
+    }
+
+    private static void collectToCollection() {
+        Stream<Student> studentStream = Stream.of(students);
+        List<String> names = studentStream.map(Student::getName).collect(Collectors.toList());
+        System.out.println("학생 이름 목록 : " + names);
+
+        Stream<Student> studentStream2 = Stream.of(students);
+        ArrayList<Integer> ageList = studentStream2.map(Student::getAge).collect(Collectors.toCollection(ArrayList::new));
+        System.out.println("학생 나이 목록 : " + ageList);
+
+        Stream<Student> studentStream3 = Stream.of(students);
+        Map<String, Integer> studentMap = studentStream3.collect(Collectors.toMap(s -> s.getName(), s -> s.getAge()));
+        System.out.print("학생 정보 Map : ");
+        studentMap.forEach((key, value) -> System.out.print("[" + key + ",  " + value + "] "));
+        System.out.println();
+
+        Stream<Student> studentStream4 = Stream.of(students);
+        String studentNames = studentStream4.map(Student::getName).collect(Collectors.joining(", ", "[", "]"));
+        System.out.println(studentNames);
+    }
+
+    private static void collectToArray() {
+        Stream<Student> studentStream = Stream.of(students);
+        Student[] studentArray = studentStream.toArray(Student[]::new);
+        Stream<Student> studentStream2 = Stream.of(students);
+        Object[] studentArray2 = studentStream2.toArray();  // Object[]로 반환하기 때문에 Student[] 사용 불가
     }
 }
