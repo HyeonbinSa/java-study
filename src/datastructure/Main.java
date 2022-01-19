@@ -19,5 +19,8 @@ public class Main {
         System.out.println("2번째 인덱스 : " + myArrayList.get(2));
         System.out.println("6의 인덱스 : " + myArrayList.indexOf(6));
         myArrayList.printList();
+        System.out.println();
+        myArrayList.add(2, 11);
+        myArrayList.printList();
     }
 }

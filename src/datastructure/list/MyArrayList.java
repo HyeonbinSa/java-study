@@ -57,6 +57,23 @@ public class MyArrayList {
         array[size++] = element;
     }
 
+    // 4-1. add() + index
+    public void add(int index, Object element) {
+        if (size <= index) {
+            System.out.println();
+        }
+        if (size == capacity) {
+            extendArray();
+        }
+        Object[] temp = new Object[capacity];
+        copyArray(temp, array);
+        for (int i = index; i < size; i++) {
+            array[i + 1] = temp[i];
+        }
+        size += 1;
+        array[index] = element;
+    }
+
     // 5. remove()
     public Object remove(int index) {
         if (size <= index) {
@@ -102,9 +119,9 @@ public class MyArrayList {
 //        Stream<Object> stream = Arrays.stream(array);
 //        stream.forEach(element -> System.out.print(element + " "));
 //        System.out.println();
-        for(Object element : array){
-            if(element != null){
-                System.out.print(element +" ");
+        for (Object element : array) {
+            if (element != null) {
+                System.out.print(element + " ");
             }
         }
     }
