@@ -76,6 +76,16 @@ public class MyLinkedList {
         return size;
     }
 
+    // 8. remove(int index)
+    public Node remove(int index) {
+        Node prevNode = this.getNodeByIndex(index - 1);
+        Node removeNode = prevNode.getNext();
+        Node nextNode = removeNode.getNext();
+        prevNode.setNext(nextNode);
+        size--;
+        return removeNode;
+    }
+
     public Node getNodeByIndex(int index) {
         Node node = head;
         int count = 0;

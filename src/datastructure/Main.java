@@ -33,6 +33,12 @@ public class Main {
         System.out.println("peek 노드 : " + peekNode.getData());
         myLinkedList.printAllNode();
         System.out.println("Size : " + myLinkedList.size());
+
+        Node removeNode = myLinkedList.remove(2);
+        System.out.println("remove 노드 : " + removeNode.getData());
+        myLinkedList.printAllNode();
+        System.out.println("Size : " + myLinkedList.size());
+
     }
 
     private static void listTest() {
