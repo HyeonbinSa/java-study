@@ -119,11 +119,13 @@ public class MyArrayList {
 //        Stream<Object> stream = Arrays.stream(array);
 //        stream.forEach(element -> System.out.print(element + " "));
 //        System.out.println();
+        System.out.print("목록 출력 : ");
         for (Object element : array) {
             if (element != null) {
                 System.out.print(element + " ");
             }
         }
+        System.out.println();
     }
 
     // add 시 확장

@@ -1,7 +1,5 @@
 package datastructure.linkedlist;
 
-import java.util.LinkedList;
-
 public class MyLinkedList {
     private Node head;
     private Node tail;
@@ -50,12 +48,31 @@ public class MyLinkedList {
         tail = node;
         size++;
     }
+
     // 5. pop()
+    public Node pop() {
+        Node node = head;
+        Node result;
+        while (true) {
+            if (node.getNext() == tail) {
+                result = node.getNext();
+                tail = node;
+                tail.setNext(null);
+                size -= 1;
+                break;
+            }
+            node = node.getNext();
+        }
+        return result;
+    }
 
     // 6. peek()
+    public Node peek() {
+        return tail;
+    }
 
     // 7. size()
-    public int size(){
+    public int size() {
         return size;
     }
 
@@ -73,10 +90,10 @@ public class MyLinkedList {
     }
 
     public void printAllNode() {
-        System.out.println("[Linked List 목록 출력]");
+        System.out.print("목록 출력 : ");
         Node node = head;
         while (true) {
-            System.out.print(node.getData()+ " ");
+            System.out.print(node.getData() + " ");
             if (node.getNext() == null) {
                 break;
             }
