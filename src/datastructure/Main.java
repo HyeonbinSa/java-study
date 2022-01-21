@@ -1,9 +1,24 @@
 package datastructure;
 
+import datastructure.linkedlist.MyLinkedList;
 import datastructure.list.MyArrayList;
+
+import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
+//        listTest();
+        MyLinkedList myLinkedList = new MyLinkedList();
+        myLinkedList.addFirst(1);
+        myLinkedList.addFirst(2);
+        myLinkedList.addFirst(3);
+        myLinkedList.addFirst(4);
+        myLinkedList.add(2, 5);
+        myLinkedList.printAllNode();
+        System.out.println("Linked List Size : " + myLinkedList.size());
+    }
+
+    private static void listTest() {
         MyArrayList myArrayList = new MyArrayList();
         myArrayList.add(1);
         myArrayList.add(10);
