@@ -4,8 +4,6 @@ import datastructure.linkedlist.MyLinkedList;
 import datastructure.linkedlist.Node;
 import datastructure.list.MyArrayList;
 
-import java.util.LinkedList;
-
 public class Main {
     public static void main(String[] args) {
         listTest();
