@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -60,5 +62,83 @@ public class ListTest {
         assertEquals(myArrayListByList.remove(3), "egg");
         assertEquals(myArrayListByList.get(3), null);
 
+    }
+
+    @Test
+    public void indexOfTest() {
+        myArrayListByList.add("one");
+        myArrayListByList.add("two");
+        myArrayListByList.add("three");
+        myArrayListByList.add("four");
+        myArrayListByList.add("two");
+        myArrayListByList.add("one");
+        assertEquals(myArrayListByList.indexOf("two"), 1);
+        assertEquals(myArrayListByList.lastIndexOf("two"), 4);
+    }
+
+    @Test
+    public void containAllTest() {
+        myArrayListByList.add("one");
+        myArrayListByList.add("two");
+        myArrayListByList.add("three");
+        myArrayListByList.add("four");
+        ArrayList<String> compare = new ArrayList<>();
+        compare.add("one");
+        compare.add("two");
+        compare.add("four");
+        assertEquals(myArrayListByList.containsAll(compare), true);
+        compare.add("five");
+        assertEquals(myArrayListByList.containsAll(compare), false);
+    }
+
+    @Test
+    public void addAllTest() {
+        myArrayListByList.add("one");
+        myArrayListByList.add("two");
+        myArrayListByList.add("three");
+        myArrayListByList.add("four");
+        ArrayList<String> compare = new ArrayList<>();
+        compare.add("1");
+        compare.add("2");
+        compare.add("3");
+        compare.add("4");
+        myArrayListByList.addAll(compare);
+        myArrayListByList.stream().forEach(str -> System.out.print(str + " "));
+        assertEquals(myArrayListByList.size(), 8);
+
+    }
+
+    @Test
+    public void removeAllTest() {
+        myArrayListByList.add("one");
+        myArrayListByList.add("two");
+        myArrayListByList.add("three");
+        myArrayListByList.add("four");
+        ArrayList<String> compare = new ArrayList<>();
+        compare.add("1");
+        compare.add("2");
+        compare.add("3");
+        compare.add("4");
+        assertEquals(myArrayListByList.removeAll(compare), false);
+        compare.add("four");
+        assertEquals(myArrayListByList.removeAll(compare), true);
+        assertEquals(myArrayListByList.size(), 3);
+    }
+
+    @Test
+    public void retainAllTest() {
+        myArrayListByList.add("one");
+        myArrayListByList.add("two");
+        myArrayListByList.add("three");
+        myArrayListByList.add("four");
+        ArrayList<String> compare = new ArrayList<>();
+        compare.add("one");
+        compare.add("two");
+        compare.add("three");
+        compare.add("four");
+        assertEquals(myArrayListByList.retainAll(compare), false);
+        compare.add("1");
+        assertEquals(myArrayListByList.removeAll(compare), true);
+        assertEquals(myArrayListByList.size(), 0);
     }
 }

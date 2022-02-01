@@ -1,9 +1,6 @@
 package datastructure.list;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class MyArrayListByList<T> implements List<T> {
     int size;
@@ -29,22 +26,18 @@ public class MyArrayListByList<T> implements List<T> {
 
     @Override
     public boolean contains(Object o) {
-        for (T object : array) {
-            if (object.equals(o)) {
-                return true;
-            }
-        }
-        return false;
+        return indexOf(o) != -1;
     }
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        T[] copyArray = Arrays.copyOf(array, size);
+        return Arrays.asList(copyArray).iterator();
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return Arrays.copyOf(array, size);
     }
 
     @Override
@@ -95,12 +88,20 @@ public class MyArrayListByList<T> implements List<T> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        for (Object object : c) {
+            if (!contains(object)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+        for (T object : c) {
+            add(object);
+        }
+        return true;
     }
 
     @Override
@@ -110,12 +111,26 @@ public class MyArrayListByList<T> implements List<T> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        int currentSize = size;
+        for (Object object : c) {
+            int index = indexOf(object);
+            if (index != -1) {
+                remove(index);
+            }
+        }
+        return currentSize != size;
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        int currentSize = size;
+        for (Object object : c) {
+            int index = indexOf(object);
+            if (index == -1) {
+                remove(index);
+            }
+        }
+        return currentSize != size;
     }
 
     @Override
@@ -163,7 +178,12 @@ public class MyArrayListByList<T> implements List<T> {
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        for (int i = size - 1; i >= 0; i--) {
+            if (array[i].equals(o)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override

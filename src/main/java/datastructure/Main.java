@@ -4,10 +4,22 @@ import datastructure.linkedlist.MyLinkedList;
 import datastructure.linkedlist.Node;
 import datastructure.list.MyArrayList;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        listTest();
-        linkedListTest();
+//        listTest();
+//        linkedListTest();
+        ArrayList<String> test = new ArrayList<>();
+        test.add("one");
+        test.add("two");
+        test.add("three");
+        test.add("four");
+        ArrayList<String> compare = new ArrayList<>();
+        compare.add("one");
+        compare.add("two");
+        compare.add("five");
+        System.out.println(test.containsAll(compare));
     }
 
     private static void linkedListTest() {
