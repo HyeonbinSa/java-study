@@ -1,9 +1,6 @@
 package datastructure.linkedlist;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class MyLinkedListByList<E> implements List<E> {
 
@@ -74,22 +71,33 @@ public class MyLinkedListByList<E> implements List<E> {
 
     @Override
     public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
+        for (E data : c) {
+            add(index++, data);
+        }
+        return true;
     }
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        return indexOf(o) != -1;
     }
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        E[] array = (E[]) toArray();
+        return Arrays.asList(array).iterator();
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] array = new Object[size];
+        Node currentNode = head;
+        int index = 0;
+        while (currentNode.next != null) {
+            array[index++] = currentNode.data;
+            currentNode = currentNode.next;
+        }
+        return array;
     }
 
     @Override
@@ -104,17 +112,26 @@ public class MyLinkedListByList<E> implements List<E> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        for (Object object : c) {
+            if (!contains(object)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        boolean flag = false;
+
+        return flag;
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        boolean flag = false;
+
+        return flag;
     }
 
     @Override
@@ -173,6 +190,7 @@ public class MyLinkedListByList<E> implements List<E> {
             if (currentNode.data.equals(o)) {
                 return index;
             }
+            currentNode = currentNode.next;
             index++;
         }
         return -1;
@@ -180,7 +198,17 @@ public class MyLinkedListByList<E> implements List<E> {
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        Node currentNode = head;
+        int index = 0;
+        int result = -1;
+        while (currentNode.next != null) {
+            if (currentNode.data.equals(o)) {
+                result = index;
+            }
+            currentNode = currentNode.next;
+            index++;
+        }
+        return result;
     }
 
     @Override
